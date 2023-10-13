@@ -1,3 +1,4 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -10,6 +11,8 @@ class AppService {
     print('phonenumber =====> $phoneNumber');
 
     String userPhone = '+66${phoneNumber.substring(1)}';
+
+    
 
     // format phone ---. +66 99 249 2635
 
@@ -26,7 +29,10 @@ class AppService {
       codeSent: (verificationId, forceResendingToken) {
         print('############ VerID ===> $verificationId');
 
-        Get.offAll(CheckOtp(verId: verificationId));
+        Get.offAll(CheckOtp(
+          verId: verificationId,
+          phone: phoneNumber,
+        ));
       },
       codeAutoRetrievalTimeout: (verificationId) {},
     );
@@ -35,17 +41,30 @@ class AppService {
   Future<void> processCheckOtp(
       {required String verifyId,
       required String otp,
+      required String phoneNumber,
       required BuildContext context}) async {
+
+
+
+        
     FirebaseAuth.instance
         .signInWithCredential(PhoneAuthProvider.credential(
             verificationId: verifyId, smsCode: otp))
-        .then((value) {
+        .then((value) async {
+      print('Sing In Scucess');
 
-          
-        })
-        .catchError((onError) {
-          print('onError ----------- $onError');
-      AppSnackBar(title: onError, subTitle: onError.message, context: context).errorSnackBar();
+      // await FirebaseFirestore.instance
+      //     .collection('user')
+      //     .doc(phoneNumber)
+      //     .get()
+      //     .then((value) {
+      //       print('value for Firebase =====> ${value.data()}');
+      //     });
+    }).catchError((onError) {
+      print('onError ----------- $onError');
+      AppSnackBar(
+              title: onError.code, subTitle: onError.message, context: context)
+          .errorSnackBar();
     });
   }
 }

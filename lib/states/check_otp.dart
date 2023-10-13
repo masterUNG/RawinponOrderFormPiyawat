@@ -9,6 +9,7 @@ import 'package:otp_text_field/style.dart';
 import 'package:passcode_screen/circle.dart';
 import 'package:passcode_screen/keyboard.dart';
 import 'package:passcode_screen/passcode_screen.dart';
+
 import 'package:rawinpornorder/utility/app_service.dart';
 import 'package:rawinpornorder/widgets/widget_button.dart';
 import 'package:rawinpornorder/widgets/widget_image.dart';
@@ -18,9 +19,12 @@ class CheckOtp extends StatelessWidget {
   CheckOtp({
     Key? key,
     required this.verId,
+    required this.phone,
   }) : super(key: key);
 
   final String verId;
+  final String phone;
+
 
   final StreamController<bool> streamController =
       StreamController<bool>.broadcast();
@@ -47,7 +51,7 @@ class CheckOtp extends StatelessWidget {
                   enabledBorderColor: Colors.deepOrange, 
                 ),onCompleted: (value) {
                   print('value at onComplete ====== $value');
-                  AppService().processCheckOtp(verifyId: verId, otp: value, context: context);
+                  AppService().processCheckOtp(verifyId: verId, otp: value, context: context, phoneNumber: phone);
                 },
               ),
               // SizedBox(
