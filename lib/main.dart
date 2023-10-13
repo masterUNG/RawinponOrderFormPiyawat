@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:rawinpornorder/states/authen.dart';
 import 'package:flutter/foundation.dart' show kIsWeb;
-import 'package:rawinpornorder/states/check_otp.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized(); // คือการทำ thrad (ส่วนของ awit) ให้เสร็จก่อนถึงจะไปทำงานอื่นได้้

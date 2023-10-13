@@ -2,7 +2,6 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
-import 'package:flutter_pin_code_widget/flutter_pin_code_widget.dart';
 import 'package:otp_text_field/otp_field.dart';
 import 'package:otp_text_field/otp_field_style.dart';
 import 'package:otp_text_field/style.dart';
@@ -11,7 +10,6 @@ import 'package:passcode_screen/keyboard.dart';
 import 'package:passcode_screen/passcode_screen.dart';
 
 import 'package:rawinpornorder/utility/app_service.dart';
-import 'package:rawinpornorder/widgets/widget_button.dart';
 import 'package:rawinpornorder/widgets/widget_image.dart';
 import 'package:rawinpornorder/widgets/widget_text.dart';
 

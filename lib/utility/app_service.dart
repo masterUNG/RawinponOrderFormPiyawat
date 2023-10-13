@@ -1,4 +1,4 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
+// import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -11,9 +11,6 @@ class AppService {
     print('phonenumber =====> $phoneNumber');
 
     String userPhone = '+66${phoneNumber.substring(1)}';
-
-    
-
     // format phone ---. +66 99 249 2635
 
     await FirebaseAuth.instance.verifyPhoneNumber(
